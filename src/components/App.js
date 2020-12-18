@@ -7,16 +7,19 @@ const App = () => {
   function reverseCount(event) {
     if(event.keyCode !== 13)
       return;
-    let cntValue = parseInt(event.target.value);
-    setSecond(Math.floor(cntValue));
+    let cntValue = Math.floor(parseInt(event.target.value));
+    if(cntValue < 0)
+      setSecond(0);
+    setSecond(cntValue);
   }
 
   useEffect(() => {
     let val = null;
-    if (second > 0) {
+
+    if(second > 0) {
       val = setTimeout(() => setSecond(second-1), 1000);
     } else {
-      setTimeout(0);
+      setSecond(0);
     }
 
     return () => clearInterval(val)
