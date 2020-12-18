@@ -9,11 +9,8 @@ const App = () => {
     if(event.keyCode !== 13)
       return;
 
-      if(inputValue <= 0 || isNaN(inputValue)) {
-        
-    console.log('something');
-        setSecond(0);
-        return;
+      if(inputValue < 0 || isNaN(inputValue)) {
+        inputValue = 0;
       }
     inputValue = Math.floor(inputValue);  
     
