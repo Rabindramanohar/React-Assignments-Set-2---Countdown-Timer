@@ -8,9 +8,15 @@ const App = () => {
     
     if(event.keyCode !== 13)
       return;
-    inputValue = Math.floor(parseInt(inputValue));
-    // if(cntValue < 0)
-    //   setSecond(0);
+
+      if(inputValue <= 0 || isNaN(inputValue)) {
+        
+    console.log('something');
+        setSecond(0);
+        return;
+      }
+    inputValue = Math.floor(inputValue);  
+    
     setSecond(inputValue);
   }
 
@@ -19,9 +25,7 @@ const App = () => {
 
     if(second > 0) {
       val = setTimeout(() => setSecond(second-1), 1000);
-    } else {
-      val = setSecond(0);
-    }
+    } 
 
     return () => clearInterval(val)
   });
@@ -30,7 +34,10 @@ const App = () => {
     <div className="wrapper">
       <div id="whole-center">
         <h1>
-          Reverse countdown for<input id="timeCount" type = "number" onKeyDown={e => reverseCount(e, e.target.value)} />{" "}sec.
+          Reverse countdown for<input 
+            id="timeCount" 
+            onKeyDown={e => reverseCount(e, e.target.value)} 
+          /> sec.
         </h1>
       </div>
       <div id="current-time">{second}</div>
