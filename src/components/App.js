@@ -5,8 +5,8 @@ const App = () => {
   const[second , setSecond] = useState(0);
   
   function reverseCount(event) {
-    let cntValue = event.target.value;
-    setSecond(cntValue);
+    let cntValue = parseInt(event.target.value);
+    setSecond(Math.floor(cntValue));
   }
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const App = () => {
     } else {
       setTimeout(0);
     }
-  });
+  }, [second]);
 
   return (
     <div className="wrapper">
