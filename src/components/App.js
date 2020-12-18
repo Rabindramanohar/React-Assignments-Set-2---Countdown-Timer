@@ -4,13 +4,14 @@ import '../styles/App.css';
 const App = () => {
   const[second , setSecond] = useState(0);
   
-  function reverseCount(event) {
-    let cntValue = Math.floor(parseInt(event.target.value));
-    // if(cntValue < 0)
-    //   setSecond(0);
-    setSecond(cntValue);
+  function reverseCount(event, inputValue) {
+    
     if(event.keyCode !== 13)
       return;
+    inputValue = Math.floor(parseInt(inputValue));
+    // if(cntValue < 0)
+    //   setSecond(0);
+    setSecond(inputValue);
   }
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const App = () => {
     <div className="wrapper">
       <div id="whole-center">
         <h1>
-          Reverse countdown for<input id="timeCount" type = "number" onKeyDown={reverseCount} />{" "}sec.
+          Reverse countdown for<input id="timeCount" type = "number" onKeyDown={e => reverseCount(e, e.target.value)} />{" "}sec.
         </h1>
       </div>
       <div id="current-time">{second}</div>
