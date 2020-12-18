@@ -5,12 +5,12 @@ const App = () => {
   const[second , setSecond] = useState(0);
   
   function reverseCount(event) {
-    if(event.keyCode !== 13)
-      return;
     let cntValue = Math.floor(parseInt(event.target.value));
     // if(cntValue < 0)
     //   setSecond(0);
     setSecond(cntValue);
+    if(event.keyCode !== 13)
+      return;
   }
 
   useEffect(() => {
