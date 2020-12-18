@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import '../styles/App.css';
 
 const App = () => {
-  const [second, setSecond] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
   const reverseCount = (event, inputValue) => {
 
@@ -13,14 +13,14 @@ const App = () => {
       inputValue = 0;
     }
 
-    setSecond(inputValue);
+    setCurrentTime(inputValue);
   }
 
   useEffect(() => {
     let val = null;
 
-    if (second > 0) {
-      val = setTimeout(() => setSecond(second - 1), 1000);
+    if (currentTime > 0) {
+      val = setTimeout(() => setCurrentTime(currentTime - 1), 1000);
     }
 
     return () => clearInterval(val)
@@ -37,7 +37,7 @@ const App = () => {
           />{" "}sec.
         </h1>
       </div>
-      <div id="current-time">{second}</div>
+      <div id="current-time">{currentTime}</div>
     </div>
   )
 }
