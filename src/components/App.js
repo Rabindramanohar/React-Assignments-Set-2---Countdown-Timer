@@ -2,27 +2,27 @@ import React, { Component, useState, useEffect } from "react";
 import '../styles/App.css';
 
 const App = () => {
-  const [currentTime, setCurrentTime] = useState(0);
+  const [second, setSecond] = useState(0);
 
   const reverseCount = (event, inputValue) => {
 
     if (event.keyCode !== 13)
       return;
     inputValue = Math.floor(inputValue);
-    if (inputValue < 0) {
+    if (inputValue < 0 || isNaN(inputValue)) {
       inputValue = 0;
     }
 
-    setCurrentTime(inputValue);
+    setSecond(inputValue);
   }
 
   useEffect(() => {
     let id = null;
-    if (currentTime > 0) {
-      id = setInterval(() => setCurrentTime(currentTime - 1), 1000);
+    if (second > 0) {
+      id = setTimeout(() => setSecond(second - 1), 1000);
     }
-    return () => clearInterval(id);
-  }); 
+    return () => clearInterval(id)
+  });
 
   return (
     <div className="wrapper">
@@ -30,12 +30,11 @@ const App = () => {
         <h1>
           Reverse countdown for<input
             id="timeCount"
-            type = "number"
             onKeyDown={e => reverseCount(e, e.target.value)}
           />{" "}sec.
         </h1>
       </div>
-      <div id="current-time">{currentTime}</div>
+      <div id="current-time">{second}</div>
     </div>
   )
 }
