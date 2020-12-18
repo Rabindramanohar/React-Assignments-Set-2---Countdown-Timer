@@ -13,9 +13,7 @@ const App = () => {
   };
   useEffect(() => {
     let id = null;
-    if (currentTime > 0) {
       id = setInterval(() => setCurrentTime(currentTime - 1), 1000);
-    }
     return () => clearInterval(id);
   });
 
@@ -28,7 +26,7 @@ const App = () => {
             id="timeCount"
             type="number"
             onKeyDown={(event) => handleKeyDown(event, event.target.value)}
-          />{" "}
+          />
           sec.
         </h1>
       </div>
