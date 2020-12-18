@@ -5,17 +5,22 @@ const App = () => {
   const[second , setSecond] = useState(0);
   
   function reverseCount(event) {
+    if(event.keyCode !== 13)
+      return;
     let cntValue = parseInt(event.target.value);
     setSecond(Math.floor(cntValue));
   }
 
   useEffect(() => {
+    let val = null;
     if (second > 0) {
-      setTimeout(() => setSecond(second-1), 1000);
+      val = setTimeout(() => setSecond(second-1), 1000);
     } else {
       setTimeout(0);
     }
-  }, [second]);
+
+    return () => clearInterval(val)
+  });
 
   return (
     <div className="wrapper">
