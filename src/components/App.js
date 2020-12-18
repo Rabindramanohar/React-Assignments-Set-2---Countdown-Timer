@@ -17,14 +17,12 @@ const App = () => {
   }
 
   useEffect(() => {
-    let val = null;
-
+    let id = null;
     if (currentTime > 0) {
-      val = setTimeout(() => setCurrentTime(currentTime - 1), 1000);
+      id = setInterval(() => setCurrentTime(currentTime - 1), 1000);
     }
-
-    return () => clearInterval(val)
-  });
+    return () => clearInterval(id);
+  }); 
 
   return (
     <div className="wrapper">
